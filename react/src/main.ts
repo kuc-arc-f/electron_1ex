@@ -24,7 +24,7 @@ const createWindow = () => {
   ipcMain.handle('test-first-api', async (_e, _arg) => {
     console.log("#test-first-api");
     console.log("Arguments received:", _arg); // 引数を確認
-    return "ret.test-first-api" + _arg;
+    return "ret.test-first-api: " + _arg;
   });
 
   ipcMain.handle('test-second-api', async (_e, a, b) => {

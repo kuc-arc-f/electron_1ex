@@ -7,7 +7,7 @@ contextBridge.exposeInMainWorld('myAPI', {
 });
 
 contextBridge.exposeInMainWorld('mytest1api', {
-  test1api: (a, b) => ipcRenderer.invoke('test-first-api', a),
+  test1api: (a) => ipcRenderer.invoke('test-first-api', a),
 });
 
 contextBridge.exposeInMainWorld('mytestsecondapi', {

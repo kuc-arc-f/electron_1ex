@@ -7,6 +7,11 @@ console.log("#Home.");
 function Home() {
 
   const testProc = async function(){
+    const res = await window.mytest1api.test1api("test1");
+    console.log(res);
+  }
+
+  const testPost = async function(){
     try{
       const url = import.meta.env.VITE_API_URL;
       console.log("url=", url);
@@ -29,15 +34,15 @@ function Home() {
       <hr />
       <Link to="/about">[ about ]</Link>
       <hr />
-      <span>Test</span>
-      <h1>Hello, world.</h1>
+      <h1>Test</h1>
       <button id="button" onClick={() => testProc()}>Open</button>
       <br />
-      <span>input</span>
-      <input type="text" id="text1"/>
       <p id="text"></p>
   </div>
   )
 }
-
 export default Home;
+/*
+<span>input</span>
+<input type="text" id="text1"/>
+*/
