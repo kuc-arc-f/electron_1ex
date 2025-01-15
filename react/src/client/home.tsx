@@ -11,22 +11,6 @@ function Home() {
     console.log(res);
   }
 
-  const testPost = async function(){
-    try{
-      const url = import.meta.env.VITE_API_URL;
-      console.log("url=", url);
-      const item = {title : "test0115b" };
-      const path = url + "/api/tauri_todo14_create";
-      const res = await window.myPostExternelApi.postExternelApi(path, item);
-      console.log(res);
-      if(res.data){
-        console.log(res.data);
-      }
-    } catch(e){
-      console.error(e);
-    }
-  }
-
   return (
   <div className="container mx-auto my-2 px-8 bg-white">
       <h1 className="text-4xl text-gray-700 font-bold my-2"

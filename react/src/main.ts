@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 import path from 'path';
 import started from 'electron-squirrel-startup';
-const axios = require("axios");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -36,42 +35,6 @@ const createWindow = () => {
       data: b,
     }
     return retObj;
-  });
-
-  ipcMain.handle('get-externel-api', async (_e, path) => {
-    //console.log("#test-first-api");
-    const retObj = {ret: 500, data: null};
-    console.log("get-externel-api.url=", path); // 引数を確認
-    try {
-      const response = await axios.get(path);
-      console.log("データ取得成功:");
-      console.log(response.data);
-      retObj.ret = 200;
-      retObj.data = response.data;
-      return retObj;
-    } catch (error) {
-      console.error(error);
-      console.error("エラーが発生しました:", error.message);
-      return retObj;
-    }
-  });
-
-  ipcMain.handle('post-externel-api', async (_e, path, item) => {
-    const retObj = {ret: 500, data: null};
-    console.log("post-externel-api.url=", path); // 引数を確認
-    try {
-      const response = await axios.post(path, item, 
-        {headers: { 'Content-Type': 'application/json'}
-      });
-      const data = response.data;
-      retObj.ret = 200;
-      retObj.data = response.data;
-      return retObj;
-    } catch (error) {
-      console.error(error);
-      console.error("エラーが発生しました:", error.message);
-      return retObj;
-    }
   });
 
   // and load the index.html of the app.
