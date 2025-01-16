@@ -36,6 +36,11 @@ npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 VITE_API_URL=http://localhost:8787
 ```
 ***
+### API server
+
+* https://github.com/kuc-arc-f/workers16
+
+***
 ### ChangeLog
 * VER_0_9_1 : new
 
