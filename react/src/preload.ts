@@ -14,4 +14,12 @@ contextBridge.exposeInMainWorld('mytestsecondapi', {
   testsecondapi: (a, b) => ipcRenderer.invoke('test-second-api', a, b),
 });
 
+contextBridge.exposeInMainWorld('myGetExternelApi', {
+  getExternelApi: (a) => ipcRenderer.invoke('get-externel-api', a),
+});
+
+contextBridge.exposeInMainWorld('myPostExternelApi', {
+  postExternelApi: (a, item) => ipcRenderer.invoke('post-externel-api', a, item),
+});
+
 

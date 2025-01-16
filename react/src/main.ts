@@ -37,6 +37,57 @@ const createWindow = () => {
     return retObj;
   });
 
+  ipcMain.handle('get-externel-api', async (_e, path) => {
+    //console.log("#test-first-api");
+    const retObj = {ret: 500 , data: null};
+    console.log("get-externel-api.url=", path); // 引数を確認
+    try {
+      const url = path;
+      const response = await fetch(url); // GETリクエストを送信
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const text = await response.text();
+      console.log(text);
+      //const data = await response.json(); // レスポンスをJSON形式で取得
+      //console.log('Response Data:', data);
+      retObj.ret = 200;
+      retObj.data = text;
+      return retObj;
+    } catch (error) {
+      console.error(error);
+      console.error("エラーが発生しました:", error.message);
+      return retObj;
+    }
+  });
+
+  ipcMain.handle('post-externel-api', async (_e, path, item) => {
+    const retObj = {ret: 500, data: null};
+    console.log("post-externel-api.url=", path); // 引数を確認
+    try {
+      const body: any = JSON.stringify(item);		
+      const response = await fetch(path, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},      
+        body: body
+      });
+      const json = await response.json()
+      retObj.ret = 200;
+      retObj.data = json;
+      /*
+      const response = await axios.post(path, item, 
+        {headers: { 'Content-Type': 'application/json'}
+      });
+      const data = response.data;
+      */
+      return retObj;
+    } catch (error) {
+      console.error(error);
+      console.error("エラーが発生しました:", error.message);
+      return retObj;
+    }
+  });
+
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
