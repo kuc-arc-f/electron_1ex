@@ -22,6 +22,11 @@ electron + react-app , example
 yarn start
 ```
 
+* tailwindcss, watch mode
+```
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+```
+
 ***
 ### setup
 
