@@ -14,6 +14,8 @@
 electron UI , ollama + phi4
 
 ***
+![img1](/image/ollama-ui-app_0117.gif)
+***
 ### setup
 
 * start
@@ -29,6 +31,17 @@ yarn package
 ```
 npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 ```
+***
+### Screen
+
+* download button, MD file output
+
+![img1](/image/ui0118a.png)
+
+* code display
+
+![img1](/image/ss0118a.png)
+
 
 ***
 ### ChangeLog
