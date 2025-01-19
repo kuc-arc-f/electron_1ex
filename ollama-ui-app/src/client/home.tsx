@@ -113,6 +113,8 @@ function Home() {
     localStorage.setItem(LibConfig.STORAGE_KEY_LLM_MODEL, selectModel);
   };
 
+  const topScroll = function(){}
+
   return (
   <div className="container mx-auto my-2 px-8 bg-white">
     {/*
@@ -159,10 +161,18 @@ function Home() {
       </>
       ): null}
       {isDownload ? (
-      <div className="text-center">
-        <button onClick={() => textDownload()}
-        className="btn-outline-blue"
-          >Download</button>
+      <div className="flex flex-row">
+        <div className="flex-1 text-center p-2">
+          <button onClick={() => textDownload()}
+          className="btn-outline-blue"
+            >Download</button>
+        </div>
+        <div className="flex-1 text-end p-2">
+          <button 
+          className="btn-outline-blue"
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth'});
+          }}>⇑ Top </button>
+        </div>
         <hr className="my-1 mt-2 mb-16 " />
       </div>
       ): null}
