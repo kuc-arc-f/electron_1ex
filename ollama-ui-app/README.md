@@ -50,6 +50,7 @@ npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 ***
 ### blog 
 
+* https://zenn.dev/link/comments/cca8fe53f762f7
 
 ***
 
