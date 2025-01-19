@@ -29,7 +29,7 @@ function Home() {
         console.log("model=", model);
         selectModel = model;
         const res = await ollama.list();
-        console.log(res.models);
+        //console.log(res.models);
         setModels(res.models);
       }catch(e){
         console.erros(e);
@@ -67,10 +67,9 @@ function Home() {
       let htm = "";
       for await (const part of response) {
         if(part.message.content){
-          console.log(part.message.content);
+          //console.log(part.message.content);
           target = target.concat(part.message.content);
           if(containsNewline(part.message.content)){
-            //console.log("#return");
             htm = marked.parse(target);
             setText(htm);
           }
@@ -84,7 +83,6 @@ function Home() {
       setGetText(target);
       setIsLoading(false);
       setIsDownload(true);
-      //setIsReceive(false);
       //console.log(target);
     } catch(e){
       console.error(e);
@@ -135,15 +133,25 @@ function Home() {
       <hr />
       <textarea id="input_text" className="input_textarea" rows="4" 
       ></textarea>
-      <div className="text-end">
-        <button id="button" onClick={() => chatStart()}
-        className="btn-blue"
+
+      <div className="flex flex-row">
+        <div className="flex-1 text-center p-1">
+        {isLoading ? (
+          <div 
+          className="animate-spin rounded-full h-8 w-8 mx-4 border-t-4 border-b-4 border-blue-500">
+          </div>
+        ): null}
+        </div>
+        <div className="flex-1 text-end p-2">
+          <button id="button" onClick={() => chatStart()}
+          className="btn-blue"
           >GO</button>
+        </div>
       </div>
+      
       {isReceive ? (
       <>
-        <pre className="bg-blue-100 mt-2 p-2">{sendText}</pre>
-        <hr className="my-1" />
+        <pre className="bg-blue-100 mt-1 p-2">{sendText}</pre>
         receive:
         <div dangerouslySetInnerHTML={{ __html: text }} id="get_text_wrap"
         className="mb-8 p-2 bg-gray-100" />
