@@ -133,7 +133,9 @@ function Home() {
       <h1 className="text-3xl text-gray-700 font-bold my-2"
       >AI-chat</h1>
       <hr />
-      <textarea id="input_text" className="input_textarea" rows="4" 
+      <textarea id="input_text" 
+      className="border border-gray-400 rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-500" 
+      rows="4" 
       ></textarea>
 
       <div className="flex flex-row">
