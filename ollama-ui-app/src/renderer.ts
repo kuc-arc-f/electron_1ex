@@ -29,5 +29,11 @@
 //import './index.css';
 
 import './index.tsx';
+//const { ipcRenderer } = require('electron');
+
+window.addEventListener('contextmenu', (event) => {
+  event.preventDefault(); // デフォルトの右クリックメニューを無効化
+  myshowcontextmenu.showcontextmenu();
+});
 
 console.log('👋 This message is being logged by "renderer.ts", included via Vite');

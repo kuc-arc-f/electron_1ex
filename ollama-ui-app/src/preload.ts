@@ -14,3 +14,6 @@ contextBridge.exposeInMainWorld('mytestsecondapi', {
   testsecondapi: (a, b) => ipcRenderer.invoke('test-second-api', a, b),
 });
 
+contextBridge.exposeInMainWorld('myshowcontextmenu', {
+  showcontextmenu: () => ipcRenderer.invoke('show-context-menu'),
+});

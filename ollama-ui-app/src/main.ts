@@ -1,7 +1,6 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, Menu } = require('electron');
 import path from 'path';
 import started from 'electron-squirrel-startup';
-//const axios = require("axios");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -36,6 +35,23 @@ const createWindow = () => {
       data: b,
     }
     return retObj;
+  });
+  ipcMain.handle('show-context-menu', async (event, _arg) => {
+    const template = [
+        {
+            label: 'Copy',
+            role: 'copy',
+        },
+        {
+            label: 'Paste',
+            role: 'paste',
+        },
+        {
+            type: 'separator',
+        },
+    ];
+    const menu = Menu.buildFromTemplate(template);
+    menu.popup(BrowserWindow.fromWebContents(event.sender));
   });
 
   // and load the index.html of the app.
