@@ -14,6 +14,11 @@
 electron UI , gemini API
 
 * models : gemini-1.5-flash , gemini-2.0-flash-exp , gemini-exp-1206
+
+***
+
+![img1](/image/llm-ui-app_0123.png)
+
 ***
 ### setup
 .env
