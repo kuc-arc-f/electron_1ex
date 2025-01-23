@@ -64,7 +64,7 @@ function Home() {
       setSendText(inText);
       setIsLoading(true);
       setIsReceive(true);
-      const model = genAI.getGenerativeModel({ model: "gemini-exp-1206"});
+      const model = genAI.getGenerativeModel({ model: selectModel });
 
       const result = await model.generateContent(inText);
       const response = await result.response;
