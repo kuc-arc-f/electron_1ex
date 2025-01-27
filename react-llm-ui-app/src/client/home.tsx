@@ -13,6 +13,7 @@ const LLM_MODELS = [
   {name: "gemini-1.5-flash"},
   {name: "gemini-2.0-flash-exp"},
   {name: "gemini-exp-1206"},
+  {name: "gemini-2.0-flash-thinking-exp-01-21"},
 ];
 //console.log("#API_KEY=" , API_KEY);
 let selectModel = "";
@@ -34,8 +35,13 @@ function Home() {
       try{
         const model = chatUtil.getModelName(LibConfig.STORAGE_KEY_LLM_MODEL);
         console.log("model=", model);
-        selectModel = model;
-        console.log(LLM_MODELS);
+        if(!model){
+          const target = LLM_MODELS[0];
+          console.log("target.model.name=", target.name);
+          selectModel = target.name;
+        }else{
+          selectModel = model;
+        }
         //setModels(res.models);
         setModels(LLM_MODELS);
       }catch(e){
